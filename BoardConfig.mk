@@ -265,6 +265,9 @@ include device/qcom/sepolicy-legacy-um/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 #BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy-minimal
 
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += $(VENDOR_PATH)
+
 # Wifi
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_HAS_QCOM_WLAN         := true
