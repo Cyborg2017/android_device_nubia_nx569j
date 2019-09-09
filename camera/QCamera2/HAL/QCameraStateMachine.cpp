@@ -1515,6 +1515,7 @@ int32_t QCameraStateMachine::procEvtPreviewingState(qcamera_sm_evt_enum_t evt,
         break;
     case QCAMERA_SM_EVT_SEND_COMMAND:
         {
+#ifndef VANILLA_HAL
             qcamera_sm_evt_command_payload_t *cmd_payload =
                     (qcamera_sm_evt_command_payload_t *)payload;
             rc = m_parent->sendCommand(cmd_payload->cmd,
