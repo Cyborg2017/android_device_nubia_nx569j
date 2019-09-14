@@ -22,6 +22,8 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 #define BTM_DEF_LOCAL_NAME   "Nubia Z17 Mini"
+#pragma push_macro("PROPERTY_VALUE_MAX")
+
 // Disables read remote device feature
 #define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
 #define MAX_ACL_CONNECTIONS    7
@@ -32,4 +34,7 @@
 #define BLE_PERIPHERAL_ADV_NAME  FALSE
 #define BTM_LE_SECURE_CONN  TRUE
 #define BTM_SCO_ENHANCED_SYNC_ENABLED  FALSE
+
+#pragma pop_macro("PROPERTY_VALUE_MAX")
+
 #endif
