@@ -244,3 +244,4 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 
 # Inherit from the proprietary version
 include vendor/nubia/nx569j/BoardConfigVendor.mk
+BUILD_BROKEN_DUP_RULES := true
