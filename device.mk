@@ -194,9 +194,9 @@ PRODUCT_PACKAGES += \
     keystore.msm8952
 
 # IPA Manager
-PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml
+#PRODUCT_PACKAGES += \
+#    ipacm \
+#    IPACM_cfg.xml
 
 # IRQ
 PRODUCT_COPY_FILES += \
