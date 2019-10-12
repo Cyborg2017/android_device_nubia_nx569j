@@ -228,6 +228,7 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 ifeq ($(WITH_TWRP),true)
 include $(DEVICE_PATH)/twrp.mk
 endif
+BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy-minimal
 
 # Wifi
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
