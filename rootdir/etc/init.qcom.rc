@@ -433,7 +433,20 @@ on post-fs-data
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
 
-    #Create IOP  deamon related dirs
+    # Sensor
+    chown system system /mnt/vendor/persist/sensors
+    chown system system /mnt/vendor/persist/sensors/sns.reg
+    chown system system /mnt/vendor/persist/sensors/sensors_list.txt
+    chown system system /mnt/vendor/persist/sensors/registry
+    chown system system /mnt/vendor/persist/sensors/registry/registry
+    chown system system /mnt/vendor/persist/sensors/registry/registry/sensors_registry
+    chown system system /mnt/vendor/persist/sensors/sensors_settings
+    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_config
+    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_version
+    chown system system /mnt/vendor/persist/sensors/registry/config
+    chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
+
+    #Create IOP deamon related dirs
     mkdir /data/vendor/iop 0770 root system
 
     # Mark the copy complete flag to not completed
@@ -726,13 +739,13 @@ service qti /system/vendor/bin/qti
     disabled
     writepid /dev/cpuset/system-background/tasks
 
-service sensors /vendor/bin/sensors.qcom
+service vendor.sensors.qti /vendor/bin/sensors.qti
     class core
-    user root
-    group root
-    disabled
+    user system
+    group system
+    writepid /dev/cpuset/system-background/tasks
 
-on property:ro.use_data_netmgrd=false
+on property:ro.vendor.use_data_netmgrd=false
     # netmgr not supported on specific target
     stop netmgrd
 
