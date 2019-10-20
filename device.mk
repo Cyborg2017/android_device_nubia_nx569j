@@ -199,6 +199,14 @@ PRODUCT_PACKAGES += \
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8952
+    
+# IMS
+PRODUCT_PACKAGES += \
+    libbase_shim \
+    ims-ext-common
+
+PRODUCT_BOOT_JARS += \
+    ims-ext-common_system
 
 # IPA Manager
 #PRODUCT_PACKAGES += \
