@@ -203,7 +203,8 @@ PRODUCT_PACKAGES += \
 # IMS
 PRODUCT_PACKAGES += \
     libbase_shim \
-    ims-ext-common
+    ims-ext-common \
+    ims-ext-common_system
 
 PRODUCT_BOOT_JARS += \
     ims-ext-common_system
