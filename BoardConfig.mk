@@ -190,6 +190,11 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
 
+BOARD_ROOT_EXTRA_FOLDERS := \
+    /persist \
+    /firmware \
+    /dsp
+
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
