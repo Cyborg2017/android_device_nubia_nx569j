@@ -147,6 +147,36 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # Extended Filesystem Support
 TARGET_EXFAT_DRIVER := sdfat
 
+<<<<<<< HEAD
+=======
+# Exclude serif fonts for saving system.img size.
+EXCLUDE_SERIF_FONTS := true
+
+# Filesystem
+BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
+BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
+BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
+
+TARGET_FS_CONFIG_GEN := $(VENDOR_PATH)/config.fs
+
+BOARD_ROOT_EXTRA_SYMLINKS := \
+    /mnt/vendor/persist:/persist
+
+BOARD_ROOT_EXTRA_FOLDERS := \
+    /firmware \
+    /dsp
+
+# HIDL
+DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
+DEVICE_MATRIX_FILE   := $(VENDOR_PATH)/compatibility_matrix.xml
+
+# exFat
+TARGET_EXFAT_DRIVER := exfat
+
+>>>>>>> 080efd33... msm8976-common: Drop persist bind mount and symlink it instead
 # FM
 BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
