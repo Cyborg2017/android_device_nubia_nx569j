@@ -247,9 +247,9 @@ PRODUCT_PACKAGES += \
     Tag
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/nfc/libnfc-nci.conf:system/etc/libnfc-nci.conf \
-    $(LOCAL_PATH)/nfc/libnfc-nci-20797b00.conf:system/etc/libnfc-nci-20797b00.conf \
-    $(LOCAL_PATH)/nfc/nfcee_access.xml:system/etc/nfcee_access.xml
+    $(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/nfc/libnfc-nci-20797b00.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci-20797b00.conf \
+    $(LOCAL_PATH)/nfc/nfcee_access.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/nfcee_access.xml
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -364,7 +364,7 @@ PRODUCT_COPY_FILES += \
 
 # Thermal
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine-srtphone.conf:system/etc/thermal-engine-srtphone.conf
+    $(LOCAL_PATH)/configs/thermal-engine-srtphone.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/thermal-engine-srtphone.conf
 
 # USB HAL
 PRODUCT_PACKAGES += \
