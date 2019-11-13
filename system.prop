@@ -108,6 +108,10 @@ persist.radio.multisim.config=dsds
 persist.vendor.radio.sib16_support=1
 persist.vendor.radio.rat_on=combine
 
+# Volte
+persist.dbg.ims_volte_enable=1
+persist.dbg.volte_avail_ovr=1
+
 # Time
 persist.timed.enable=true
 
@@ -122,7 +126,6 @@ audio.parser.ip.buffer.size=262144
 ro.qualcomm.cabl=2
 
 #Simulate sdcard on /data/media
-#
 persist.fuse_sdcard=true
 
 #System property for FM transmitter
@@ -130,6 +133,7 @@ ro.fm.transmitter=false
 
 #property to enable user to access Google WFD settings
 persist.debug.wfd.enable=1
+
 #property to enable VDS WFD solution
 persist.hwc.enable_vds=1
 
