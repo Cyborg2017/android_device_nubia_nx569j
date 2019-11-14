@@ -174,3 +174,6 @@ sched.colocate.enable=1
 persist.radio.lw_enabled=true
 ro.telephony.default_ca_state=1
 persist.radio.primarycard=true
+
+# Maintainer
+ro.mk.maintainer=Cyborg2017
