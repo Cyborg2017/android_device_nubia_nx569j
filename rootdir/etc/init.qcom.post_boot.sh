@@ -2896,3 +2896,7 @@ misc_link=$(ls -l /dev/block/bootdevice/by-name/misc)
 real_path=${misc_link##*>}
 setprop persist.vendor.mmi.misc_dev_path $real_path
 
+
+# Set Sound Control parameters after boot
+echo 5 > /sys/kernel/sound_control/speaker_gain
+echo "3 3" > /sys/kernel/sound_control/earpiece_gain
