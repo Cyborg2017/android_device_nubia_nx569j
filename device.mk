@@ -85,10 +85,6 @@ PRODUCT_PACKAGES += \
     libmm-qcamera \
     Snap
 
-# ConfigPanel
-PRODUCT_PACKAGES += \
-    ConfigPanel
-
 # Configstore
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service
