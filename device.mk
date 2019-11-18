@@ -121,6 +121,10 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     vendor.display.config@1.0 \
     vendor.display.config@1.0_vendor
+    
+# Doze mode
+PRODUCT_PACKAGES += \
+    NubiaDoze
 
 # DRM
 PRODUCT_PACKAGES += \
