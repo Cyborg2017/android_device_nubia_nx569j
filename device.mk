@@ -428,7 +428,8 @@ $(call inherit-product, vendor/nubia/nx569j/nx569j-vendor.mk)
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
 	ro.hdmi.enable=true \
-	ro.hdmi.mirror.enable=true
+	ro.hdmi.mirror.enable=true \
+	persist.sys.wfd.virtual=0
 
 # USB debugging
 PRODUCT_PROPERTY_OVERRIDES += \
