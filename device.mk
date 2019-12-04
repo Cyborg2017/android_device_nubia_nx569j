@@ -437,3 +437,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.adb.secure=0 \
     ro.secure=0 \
     ro.debuggable=1
+	
+# Enable missing props
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.opa.eligible_device=true \
+    ro.gfx.angle.supported=true
