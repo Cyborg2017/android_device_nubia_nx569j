@@ -423,3 +423,9 @@ PRODUCT_COPY_FILES += \
 
 # Call the proprietary setup
 $(call inherit-product, vendor/nubia/nx569j/nx569j-vendor.mk)
+
+# Cast hacks
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.debug.wfd.enable=1 \
+	ro.hdmi.enable=true \
+	ro.hdmi.mirror.enable=true
