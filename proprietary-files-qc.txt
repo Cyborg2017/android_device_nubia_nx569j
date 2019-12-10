@@ -660,3 +660,7 @@ vendor/lib64/libwvhidl.so|ff967a2aab27d75eb858c6a7a269d4090af9f377
 
 # Wi-Fi - from nubia msm8976
 bin/wcnss_service:vendor/bin/wcnss_service
+
+# msm_irqbalance - from sailfish - PPR2.181005.003 [for android 10.0]
+vendor/bin/msm_irqbalance|3f7a923d9d01dbfda40ebdfdd27a62167df69c13
+
