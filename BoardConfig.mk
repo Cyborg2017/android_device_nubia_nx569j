@@ -270,9 +270,10 @@ include $(DEVICE_PATH)/twrp.mk
 endif
 
 # SELinux
+BOARD_SEPOLICY_VERS := 29.0
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
-#BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
-BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy-minimal
+BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
+#BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy-minimal
 
 # Wifi
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
