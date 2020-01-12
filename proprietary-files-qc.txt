@@ -197,6 +197,8 @@ vendor/bin/energy-awareness|8ec3f96a118c37a2dda0d70122ff075861641ccc
 etc/firmware/DE.o.msm8952|a7c25709e65409e559b8a6849646bca027c4f40e
 etc/firmware/DE.o.msm8976|676a46b8d21ac238fa12fbccdead6521dce2926c
 
+# GPS - [remove for android 10.0]
+#-priv-app/com.qualcomm.location/com.qualcomm.location.apk
 # GPS - from xiaomi msm8956
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qualcomm.location.xml
@@ -206,7 +208,6 @@ framework/izat.xt.srv.jar
 lib64/liblocationservice_jni.so
 lib64/libxt_native.so
 lib64/vendor.qti.gnss@1.0.so
--priv-app/com.qualcomm.location/com.qualcomm.location.apk
 vendor/bin/hw/vendor.qti.gnss@1.0-service
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
