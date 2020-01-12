@@ -571,7 +571,7 @@ product/framework/qti-telephony-common.jar|74adbf98e89531ac385ab5c4cea3c2549a0d2
 # Radio - IMS - from qcom [for android 10.0]
 -priv-app/ims/ims.apk|71b2daa01887c75301f8b73ad47317c29392d383
 # Radio - IMS - from qcom
--app/imssettings/imssettings.apk|0e579b1c9251173b9ec0381a0bb406d0e0314c39
+-app/imssettings/imssettings.apk|20d9b2c3f5939d4bfa7c03b5383d0cf03dbbc39e
 etc/permissions/qti-vzw-ims-internal.xml
 lib/com.qualcomm.qti.imscmservice@1.0.so
 lib/lib-imscamera.so
