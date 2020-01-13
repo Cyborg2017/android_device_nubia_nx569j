@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 # Screen density
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
@@ -21,6 +22,15 @@ PRODUCT_AAPT_CONFIG := normal
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-mokee
+
+
+# Get non-open-source specific aspects
+$(call inherit-product, vendor/nubia/nx569j/nx569j-vendor.mk)
+
+#Android net
+PRODUCT_PACKAGES += \
+   libandroid_net \
+   libandroid_net_32
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -67,14 +77,6 @@ PRODUCT_COPY_FILES +=  \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/mixer_paths_mtp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.xml
 
-# Bluetooth
-PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0-service \
-    libbt-vendor
-    
-PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-sp/libbase.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libbase-v28.so
-
 # VoLTE
 PRODUCT_PROPERTY_OVERRIDES += \
    persist.dbg.volte_avail_ovr=1 \
@@ -88,6 +90,14 @@ PRODUCT_COPY_FILES += \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-service \
+    libbt-vendor
+
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-sp/libbase.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libbase-v28.so
+
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
@@ -99,10 +109,6 @@ PRODUCT_PACKAGES += \
 # Configstore
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service
-    
-# ConfigPanel
-PRODUCT_PACKAGES += \
-    ConfigPanel
 
 # Codec2 modules
 PRODUCT_PACKAGES += \
@@ -120,6 +126,14 @@ PRODUCT_COPY_FILES += \
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
     libcnefeatureconfig
+
+# ConfigPanel
+PRODUCT_PACKAGES += \
+    ConfigPanel
+
+# DataServices
+PRODUCT_PACKAGES += \
+    librmnetctl
 
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -149,7 +163,7 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     vendor.display.config@1.0 \
     vendor.display.config@1.0_vendor
-    
+
 # Doze mode
 PRODUCT_PACKAGES += \
     NubiaDoze
@@ -160,10 +174,18 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.2-service.clearkey
 
+#Face  detection extension
+PRODUCT_PACKAGES += \
+    org.codeaurora.camera
+
 # FM
 PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
+
+# For android_filesystem_config.h
+PRODUCT_PACKAGES += \
+    fs_config_files
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -176,26 +198,26 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl-qti \
+    gps.msm8952 \
     libcurl \
     libgnss \
     libgnsspps
 
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl-qti \
-    android.hardware.gnss@1.0-service-qti
+    flp.conf \
+    gps.conf \
+    izat.conf \
+    lowi.conf \
+    sap.conf \
+    xtwifi.conf
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/etc/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
-    $(LOCAL_PATH)/gps/etc/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
-    $(LOCAL_PATH)/gps/etc/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
-    $(LOCAL_PATH)/gps/etc/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf \
-    $(LOCAL_PATH)/gps/etc/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
-    $(LOCAL_PATH)/gps/etc/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf
-
-# Healthd
+# Health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl \
-    android.hardware.health@2.0-service
+    android.hardware.health@2.0-service \
+    android.hardware.health@2.0 \
+    chargeonlymode
 
 # HW crypto
 PRODUCT_PACKAGES += \
@@ -207,11 +229,6 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0 \
     android.hidl.manager@1.0-java
 
-# Keymaster HAL
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
-
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8952
@@ -221,11 +238,7 @@ PRODUCT_PACKAGES += \
     ebtables \
     ethertypes \
     libebtc
-
-# Keystore
-PRODUCT_PACKAGES += \
-    keystore.msm8952
-    
+ 
 # IMS
 PRODUCT_PACKAGES += \
     libbase_shim \
@@ -243,19 +256,30 @@ PRODUCT_BOOT_JARS += \
 #    ipacm \
 #    IPACM_cfg.xml
 
+# IPC router config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
+
+# IPv6
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes \
+    libebtc
+
 # IRQ
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf \
     $(LOCAL_PATH)/configs/msm_irqbalance_little_big.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance_little_big.conf
 
-# IRSC
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
-
 # Keylaouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/nubia_synaptics_dsx.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/nubia_synaptics_dsx.kl \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl
+
+# Keymaster HAL
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -273,9 +297,8 @@ PRODUCT_COPY_FILES += \
 # Netutils
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0 \
-    android.system.net.netd@1.0 \
-    libandroid_net
-
+    android.system.net.netd@1.0
+    
 # NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0-impl-bcm \
@@ -350,6 +373,11 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.2-service-qti \
     android.hardware.power.stats@1.0-service.mock
 
+# Qualcomm dependencies
+PRODUCT_PACKAGES += \
+    libtinyxml \
+    libxml2
+
 # QCOM
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/privapp-permissions-qti.xml \
@@ -410,19 +438,33 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
 
-# VNDK
-PRODUCT_PACKAGES += \
-    vndk-sp
-
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
 
+# Widevine
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-service.widevine
+
 # WCNSS
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
+    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:$(TARGET_COPY_OUT_SYSTEM)/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
+    $(LOCAL_PATH)/wifi/WCNSS_wlan_dictionary.dat:$(TARGET_COPY_OUT_SYSTEM)/etc/firmware/wlan/prima/WCNSS_wlan_dictionary.dat
+
+# Whitelisted app
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml
+
+# VNDK-SP:
+PRODUCT_PACKAGES += \
+    vndk-sp
+
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v27/arm64/arch-arm64-armv8-a/shared/vndk-core/android.frameworks.sensorservice@1.0.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.frameworks.sensorservice@1.0-v27.so \
+    prebuilts/vndk/v27/arm64/arch-arm64-armv8-a/shared/vndk-core/android.hardware.gnss@1.0.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.hardware.gnss@1.0-v27.so
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -430,6 +472,8 @@ PRODUCT_PACKAGES += \
     libcld80211 \
     libqsap_sdk \
     libQWiFiSoftApCfg \
+    libwcnss_qmi \
+    libwifi-hal-qcom \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
@@ -441,9 +485,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
-
-# Call the proprietary setup
-$(call inherit-product, vendor/nubia/nx569j/nx569j-vendor.mk)
 
 # Cast hacks
 PRODUCT_PROPERTY_OVERRIDES += \
