@@ -21,7 +21,7 @@ on early-boot
 on boot
 # start fpc fingerprint for nx591j
     mkdir /dev/fpcSocket 0770 system system
-    chmod -R 0777 /dev/fpcSocket
+    chmod 0777 /dev/fpcSocket
 # end fpc fingerprint for nx591j
 
     # Update foreground cpuset now that processors are up
