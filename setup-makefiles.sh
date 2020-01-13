@@ -40,11 +40,25 @@ fi
 setup_vendor "$DEVICE" "$VENDOR" "$MK_ROOT"
 
 # Copyright headers and guards
-write_headers
+write_headers "nx569j"
 
-write_makefiles "$MY_DIR"/proprietary-files-nubia.txt
-echo "" >> "$PRODUCTMK"
-write_makefiles "$MY_DIR"/proprietary-files-qc.txt
+# The standard common blobs
+write_makefiles "$MY_DIR"/proprietary-files.txt
 
-# Finish
+# We are done!
 write_footers
+
+if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
+    # Reinitialize the helper for device
+    INITIAL_COPYRIGHT_YEAR="$DEVICE_BRINGUP_YEAR"
+    setup_vendor "$DEVICE" "$VENDOR" "$MK_ROOT" false
+
+    # Copyright headers and guards
+    write_headers
+
+    # The standard device blobs
+    write_makefiles "$MY_DIR"/../$DEVICE/proprietary-files.txt true
+
+    # We are done!
+    write_footers
+fi

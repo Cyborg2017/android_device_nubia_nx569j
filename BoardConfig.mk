@@ -226,11 +226,10 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
 
-# SELinux
-include device/qcom/sepolicy/sepolicy.mk
-
 # Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # Render
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
@@ -241,11 +240,6 @@ PROTOBUF_SUPPORTED := true
 USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR := true
 TARGET_USES_ALTERNATIVE_MANUAL_NETWORK_SELECT := true
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
-
-# TWRP
-ifeq ($(WITH_TWRP),true)
-include $(DEVICE_PATH)/twrp.mk
-endif
 
 # SELinux
 BOARD_SEPOLICY_VERS := 29.0
