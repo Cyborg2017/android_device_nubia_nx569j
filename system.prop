@@ -91,6 +91,7 @@ media.aac_51_output_enabled=true
 mm.enable.qcom_parser=1048575
 vidc.enc.dcvs.extra-buff-count=2
 media.stagefright.thumbnail.prefer_hw_codecs=true
+persist.media.treble_omx=false
 
 # NITZ
 persist.rild.nitz_plmn=
