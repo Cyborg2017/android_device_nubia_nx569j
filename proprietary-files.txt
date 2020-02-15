@@ -391,6 +391,9 @@ etc/firmware/venus-v1.b04
 etc/firmware/venus-v1.mbn
 etc/firmware/venus-v1.mdt
 
+# Media Codec2 - Hex edit
+lib64/libsfplugin_ccodec.so|d9a093b86d1ec831591049c95f2027b245b512e2
+
 # Peripheral manager - from nubia msm8976
 bin/pm-proxy:vendor/bin/pm-proxy
 bin/pm-service:vendor/bin/pm-service
