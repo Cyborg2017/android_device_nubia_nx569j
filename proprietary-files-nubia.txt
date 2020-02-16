@@ -270,6 +270,9 @@ lib64/libfp_client.so:vendor/lib64/libfp_client.so
 lib64/libfpnav.so:vendor/lib64/libfpnav.so
 lib64/libfpservice.so:vendor/lib64/libfpservice.so
 
+# Fingerprint - add for gx_fpd
+lib/libunwind.so
+lib64/libunwind.so
 
 # NFC
 lib64/hw/nfc_nci.bcm2079x.default.so:vendor/lib64/hw/nfc_nci.bcm2079x.default.so|265bfb5be9efa535596999b233b513011c5cb3bd
@@ -285,4 +288,3 @@ lib64/sensors.oem.so
 etc/firmware/nubia_tp_jdi_fw.img
 etc/firmware/nubia_tp_ofilm_fw_ctcr.img
 etc/firmware/nubia_tp_ofilm_fw_ctct.img
-
