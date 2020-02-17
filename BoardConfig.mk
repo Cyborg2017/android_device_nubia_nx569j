@@ -59,7 +59,6 @@ TARGET_KERNEL_SOURCE := kernel/nubia/nx569j
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
-
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
@@ -210,7 +209,6 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 # Render
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 USE_OPENGL_RENDERER := true
-
 
 # RIL
 PROTOBUF_SUPPORTED := true

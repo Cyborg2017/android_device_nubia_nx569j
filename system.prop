@@ -78,7 +78,6 @@ media.aac_51_output_enabled=true
 mm.enable.qcom_parser=1048575
 vidc.enc.dcvs.extra-buff-count=2
 
-
 # NITZ
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
@@ -107,10 +106,6 @@ persist.radio.multisim.config=dsds
 persist.vendor.radio.sib16_support=1
 persist.vendor.radio.rat_on=combine
 
-# Storage
-
-# TCP
-
 # Time
 persist.timed.enable=true
 
@@ -127,7 +122,6 @@ ro.qualcomm.cabl=2
 #Simulate sdcard on /data/media
 #
 persist.fuse_sdcard=true
-
 
 #System property for FM transmitter
 ro.fm.transmitter=false
