@@ -58,7 +58,7 @@ fi
 # Initialize the helper
 setup_vendor "$DEVICE" "$VENDOR" "$MK_ROOT" false "$CLEAN_VENDOR"
 
-extract "$MY_DIR"/proprietary-files-qc.txt "$SRC" "$SECTION"
+extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 
 extract "$MY_DIR"/proprietary-files-nubia.txt "$SRC" "$SECTION"
 
