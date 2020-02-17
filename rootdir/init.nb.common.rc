@@ -19,6 +19,11 @@ on early-boot
     write /sys/bus/msm_subsys/devices/subsys3/restart_level "related"
 
 on boot
+# start fpc fingerprint for nx591j
+    mkdir /dev/fpcSocket 0770 system system
+    chmod -R 0777 /dev/fpcSocket
+# end fpc fingerprint for nx591j
+
     # Update foreground cpuset now that processors are up
     # reserve CPU 3 for the top app and camera daemon
     write /dev/cpuset/foreground/cpus 0-2,4-5
