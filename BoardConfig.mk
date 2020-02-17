@@ -53,7 +53,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CONFIG := lineageos_nx569j_defconfig
+TARGET_KERNEL_CONFIG := mokee_nx569j_defconfig
 TARGET_KERNEL_SOURCE := kernel/nubia/msm8976
 
 # ANT+
@@ -169,8 +169,8 @@ TARGET_PROVIDES_KEYMASTER := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# Lineage Hardware
-JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(DEVICE_PATH)/lineagehw|**/*.java
+# MoKee Hardware
+JAVA_SOURCE_OVERLAYS := org.mokee.hardware|$(DEVICE_PATH)/mkhw|**/*.java
 
 # OTA Assert
 TARGET_OTA_ASSERT_DEVICE := NX569J,NX569H
