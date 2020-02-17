@@ -13,4 +13,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/mk_nx569j.mk
+    $(LOCAL_DIR)/mokee_nx569j.mk

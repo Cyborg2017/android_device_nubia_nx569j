@@ -25,13 +25,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common MoKee stuff.
-$(call inherit-product, vendor/mk/config/common_full_phone.mk)
+$(call inherit-product, vendor/mokee/config/common_full_phone.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/nubia/nx569j/device.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := mk_nx569j
+PRODUCT_NAME := mokee_nx569j
 PRODUCT_DEVICE := nx569j
 PRODUCT_BRAND := nubia
 PRODUCT_MODEL := NX569J
