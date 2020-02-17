@@ -1,4 +1,4 @@
-service sensors-hal-1-0 /vendor/bin/hw/android.hardware.sensors@1.0-service.nx569j
+service sensors-hal-1-0 /vendor/bin/hw/android.hardware.sensors@1.0-service.msm8976
     class hal
     user system
     group system input wakelock

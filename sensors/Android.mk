@@ -3,8 +3,8 @@ LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_PROPRIETARY_MODULE := true
-LOCAL_MODULE := android.hardware.sensors@1.0-service.nx569j
-LOCAL_INIT_RC := android.hardware.sensors@1.0-service.nx569j.rc
+LOCAL_MODULE := android.hardware.sensors@1.0-service.msm8976
+LOCAL_INIT_RC := android.hardware.sensors@1.0-service.msm8976.rc
 LOCAL_SRC_FILES := \
         service.cpp \
 
