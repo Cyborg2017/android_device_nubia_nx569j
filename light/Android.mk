@@ -1,8 +1,8 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := android.hardware.light@2.0-service.nx569j
-LOCAL_INIT_RC := android.hardware.light@2.0-service.nx569j.rc
+LOCAL_MODULE := android.hardware.light@2.0-service.nubia
+LOCAL_INIT_RC := android.hardware.light@2.0-service.nubia.rc
 LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_SRC_FILES := \
@@ -18,6 +18,11 @@ LOCAL_SHARED_LIBRARIES := \
     libhwbinder \
     libutils \
     android.hardware.light@2.0
+
+ifneq (,$(filter nx589j,$(TARGET_DEVICE)))
+    LOCAL_CFLAGS += -DNO_HOME_LED
+    LOCAL_CFLAGS += -DMAX_BACKLIGTH_4095
+endif
 
 include $(BUILD_EXECUTABLE)
 

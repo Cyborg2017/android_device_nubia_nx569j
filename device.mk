@@ -320,7 +320,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.nx569j
+    android.hardware.light@2.0-service.nubia
 
 # Media
 PRODUCT_COPY_FILES += \

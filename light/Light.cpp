@@ -24,8 +24,11 @@ namespace {
 
 using android::hardware::light::V2_0::LightState;
 
+#ifdef MAX_BACKLIGTH_4095
+static constexpr int DEFAULT_MAX_BRIGHTNESS = 4095;
+#else
 static constexpr int DEFAULT_MAX_BRIGHTNESS = 255;
-
+#endif
 static constexpr int HOME_MASK = 16;
 static constexpr int LEFT_MASK = 8;
 static constexpr int RIGHT_MASK = 32;
@@ -34,12 +37,19 @@ static constexpr int AW_POWER_OFF = 0;
 static constexpr int AW_CONST_ON = 1;
 static constexpr int AW_FADE_AUTO = 3;
 
+#ifdef MAX_BACKLIGTH_4095
+static uint32_t rgbToBrightness(const LightState& state) {
+    uint32_t color = state.color & 0x00ffffff;
+    return ((77 * ((color >> 16) & 0xff)) + (150 * ((color >> 8) & 0xff)) +
+            (29 * (color & 0xff))) >> 4;
+}
+#else
 static uint32_t rgbToBrightness(const LightState& state) {
     uint32_t color = state.color & 0x00ffffff;
     return ((77 * ((color >> 16) & 0xff)) + (150 * ((color >> 8) & 0xff)) +
             (29 * (color & 0xff))) >> 8;
 }
-
+#endif
 static bool isLit(const LightState& state) {
     return (state.color & 0x00ffffff);
 }
@@ -224,7 +234,7 @@ void Light::setSpeakerBatteryLightLocked() {
 
 void Light::setSpeakerLightBlinkingLocked(const LightState&) {
 
-    // Disable all blinking to start
+// Disable all blinking to start
 #ifdef NO_HOME_LED
     setButtonsblinking(false, false);
 #else
